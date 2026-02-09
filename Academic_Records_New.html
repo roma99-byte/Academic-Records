@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>University Academic Records System</title>
+
+  <style>
+    :root {
+      --primary: #0d6efd;
+      --secondary: #6c757d;
+      --light: #f8f9fa;
+      --border: #dee2e6;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: var(--primary);
+      color: white;
+      padding: 18px 30px;
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 30px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      border-left: 5px solid var(--primary);
+      padding-left: 10px;
+      margin-top: 40px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      row-gap: 12px;
+      column-gap: 15px;
+      max-width: 600px;
+    }
+
+    label {
+      font-weight: 600;
+      color: #333;
+    }
+
+    input {
+      padding: 7px 10px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background: var(--light);
+      font-weight: 600;
+    }
+
+    button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 15px;
+      text-align: center;
+      background: var(--light);
+      font-size: 14px;
+      border-top: 1px solid var(--border);
+    }
+
+    .note {
+      font-size: 13px;
+      color: var(--secondary);
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  University Academic Records Management System
+</header>
+
+<main>
+
+  <h2>Student Information</h2>
+  <div class="grid">
+    <label>Name</label>
+    <input type="text" />
+
+    <label>Registration Number</label>
+    <input type="text" />
+
+    <label>Date of Admission</label>
+    <input type="date" />
+  </div>
+
+  <h2>First Examination</h2>
+  <table id="exam1">
+    <tr>
+      <th>Unit Name</th>
+      <th>Grade</th>
+      <th>Season</th>
+      <th>Attempt</th>
+    </tr>
+  </table>
+  <button onclick="addRow('exam1')">Add Attempt</button>
+
+  <h2>Second Examination</h2>
+  <table id="exam2">
+    <tr>
+      <th>Unit Name</th>
+      <th>Grade</th>
+      <th>Season</th>
+      <th>Attempt</th>
+    </tr>
+  </table>
+  <button onclick="addRow('exam2')">Add Attempt</button>
+
+  <h2>Final Examination</h2>
+  <table id="exam3">
+    <tr>
+      <th>Unit Name</th>
+      <th>Grade</th>
+      <th>Season</th>
+      <th>Attempt</th>
+    </tr>
+  </table>
+  <button onclick="addRow('exam3')">Add Attempt</button>
+
+</main>
+
+<footer>
+  <strong>Grade to Pass:</strong> B− or better<br />
+  <span class="note">Official university academic record</span>
+</footer>
+
+<script>
+  function addRow(tableId) {
+    const table = document.getElementById(tableId);
+    const count = table.rows.length;
+
+    if (count > 6) {
+      alert("Maximum attempts (06) reached");
+      return;
+    }
+
+    const row = table.insertRow();
+    row.insertCell(0).innerHTML = '<input type="text">';
+    row.insertCell(1).innerHTML = '<input type="text" style="width:70px">';
+    row.insertCell(2).innerHTML = '<input type="text" style="width:120px">';
+    row.insertCell(3).innerText = 'Attempt ' + String(count).padStart(2,'0');
+  }
+</script>
+
+</body>
+</html>
